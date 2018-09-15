@@ -1,0 +1,55 @@
+/*Global Styles*/
+body{
+  height: 800px;
+  background-color: #000;
+  color: #01abaa;
+}
+h1 {
+  font-size: 50px;
+}
+
+p{
+  font-size: 18px;
+}
+
+button{
+  font-size: 30px;
+  background-color: #fedc3d;
+  border: none;
+  color: #000;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 10px 20px;
+  border-radius: 35px
+}
+/**/
+.frame{
+
+}
+.screen{
+  text-align: center;
+  background-color: ;
+  height: 860px;
+}
+.rows{
+  border: 1px solid black;
+  margin: auto;
+}
+.cell{
+  width: 90px;
+  height: 90px;
+  font-size: 60px;
+  text-align: center;
+  padding: 0 0 0 15px;
+  margin: 20px;
+  text-align: center;
+}
+/* .line-zero rows{
+  border: 2px solid #fea680;
+} */
+.line-one{
+  padding: 0 5px 0 10px;
+}
