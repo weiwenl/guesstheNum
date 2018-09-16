@@ -1,6 +1,8 @@
 /*Global Styles*/
 body{
   height: 800px;
+  width: 800px;
+  margin: auto;
   background-color: #000;
   color: #01abaa;
 }
@@ -13,43 +15,39 @@ p{
 }
 
 button{
-  font-size: 30px;
+  font-size: 20px;
   background-color: #fedc3d;
-  border: none;
-  color: #000;
+  border-radius: 35px;
+  border-color: #fea680;
+  outline: none;
   padding: 20px;
   text-align: center;
-  text-decoration: none;
   display: inline-block;
-  font-size: 20px;
   margin: 10px 20px;
-  border-radius: 35px
 }
+button:focus { outline: none; }
 /**/
 .frame{
-
-}
-.screen{
   text-align: center;
   background-color: ;
   height: 860px;
 }
-.rows{
-  border: 1px solid black;
-  margin: auto;
-}
+
 .cell{
   width: 90px;
   height: 90px;
   font-size: 60px;
   text-align: center;
-  padding: 0 0 0 15px;
+  padding: 0 15px 0 15px;
   margin: 20px;
   text-align: center;
 }
-/* .line-zero rows{
+.line-zero rows{
   border: 2px solid #fea680;
-} */
-.line-one{
-  padding: 0 5px 0 10px;
+}
+
+/* For testing visibility */
+#solution{
+  border: 2px solid red;
+  /* visibility: hidden; */
 }
