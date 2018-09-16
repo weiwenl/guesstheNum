@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title></title>
+  </head>
+  <body>
+    <div class="frame">
+        <div class="screen">
+            <div class="header">
+              <h1>Guess the Numbers</h1>
+              <p>Insert Instructions</p>
+                <button onclick="startGame()" type="button" name="button">Start Game</button>
+                <button id="check" onclick="" type="button" name="button">Check Numbers</button>
+                <button type="button" name="button">Reset</button>
+                  <div class="rows">
+                        <input  class="cell line-zero" id="01" type="text" name="set" min="0" max="9">
+                        <input onchange="storeInputs()" class="cell line-zero" id="02" type="text" name="set" min="0" max="9">
+                        <input onchange="storeInputs()" class="cell line-zero" id="03" type="text" name="set" min="0" max="9">
+                        <input onchange="storeInputs()" class="cell line-zero" id="04" type="text" name="set" min="0" max="9">
+                  </div>
+                  <div class="rows">
+                        <input class="cell line-one" id="11" type="text" name="guess" min="0" max="9">
+                        <input class="cell line-one" id="12" type="text" name="guess" min="0" max="9">
+                        <input class="cell line-one" id="13" type="text" name="guess" min="0" max="9">
+                        <input class="cell line-one" id="14" type="text" name="guess" min="0" max="9">
+                  </div>
+            </div>
+      </div>
+  </div>
+
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>

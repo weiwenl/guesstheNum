@@ -49,7 +49,10 @@ var genRanNum = function(){
 
 
 //- hide the 4 numbers from view of player when <start game> button is clicked
-
+var startGame = function(){
+  cellsInRow.style.display = "none";
+}
 
 genRanNum();
-alert(genRandomNumbers);
+startGame();
+// alert(genRandomNumbers);
