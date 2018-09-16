@@ -1,22 +1,55 @@
-//Pseudo Code
+//Declarations and Variables
+var setNumbers = []; //this should store the input numbers
+var genRandomNumbers = [];
 
-//Get 4 numbers as input (0-9, no repeats)
-//- Alert error if the numbers are repeated
-//- if no input detected get input = random numbers
-//- Save number
+var cellsInRow = document.getElementsByClassName("line-zero");
+var setCell1 = document.getElementById("01");
+var setCell2 = document.getElementById("02");
+var setCell3 = document.getElementById("03");
+var setCell4 = document.getElementById("04");
+
+
+// //NO NUMBERS CAN BE REPEATED
+//Get 4 numbers from input (0-9, no repeats) and store
+//~
+
+//- Save number into pre-set inputs
+var storeSetValues = function(){
+  setCell1.value = genRandomNumbers[0];
+  setCell2.value = genRandomNumbers[1];
+  setCell3.value = genRandomNumbers[2];
+  setCell4.value = genRandomNumbers[3];
+}
+//If no input, input = random numbers
+var genRanNum = function(){
+  for(var i = 0; i < cellsInRow.length; i++) {
+    randomNumber = Math.floor(Math.random()*10);
+    genRandomNumbers.push(randomNumber);
+  }
+  storeSetValues();
+}
+/////////////////////////////////////////
+// var genRanNum = function(){
+//   for(var i = 0; i < cellsInRow.length; i++){
+//     var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+//     var pos = Math.floor(Math.random()*10);
+//     var set = nums[parseInt(pos)];
+//   }
+//   console.log(set);
+//   return genRandomNumbers.push(set);
+// }
+//   genRanNum();
+//   console.log(parseInt(pos));
+//
+//   console.log(genRandomNumbers);
+//   return temp.push(set)
+//////////////////////////////////////////
+// console.log(randomNumber);
+// console.log(genRandomNumbers)
+
+
 //- hide the 4 numbers from view of player when <start game> button is clicked
 
-//Create 4 input element to get the guess from the user
-//Check if the input is the same as the SET INPUT
-//- if the number exists in the array, set the background color of the input to RED
-//- if the number exists and it is in the correct position in the array,
-    //set the background color of the input to GREEN
-//- if the number does not exist at all, dont change the background color
 
-//After the check process is done, create another set of elements of the next guess
-//Call the fn above and repeat the process until the player has reach 7 guess.
-
-//Keep checking that the input = to the set input < 8 guess
-//- If the user did not solve the guess within 7 tries, alert user that he lost.
-
-// |_| |_| |_| |_|
+genRanNum();
+alert(genRandomNumbers);
