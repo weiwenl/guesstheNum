@@ -7,28 +7,29 @@
   </head>
   <body>
     <div class="frame">
-        <div class="screen">
             <div class="header">
-              <h1>Guess the Numbers</h1>
-              <p>Insert Instructions</p>
+              <h1>Crack the Code</h1>
+              <p>The objective of the game is to guess the exact positions of the numbers in the computer's sequence.<br>
+                For each number that is correct and in the correct position, the number display will turn green.<br>For each number that is correct but is NOT in the correct position, the number display will turn red.</p>
+            </div>
+
                 <button onclick="startGame()" type="button" name="button">Start Game</button>
                 <button id="check" onclick="" type="button" name="button">Check Numbers</button>
                 <button type="button" name="button">Reset</button>
-                  <div class="rows">
-                        <input  class="cell line-zero" id="01" type="text" name="set" min="0" max="9">
-                        <input onchange="storeInputs()" class="cell line-zero" id="02" type="text" name="set" min="0" max="9">
-                        <input onchange="storeInputs()" class="cell line-zero" id="03" type="text" name="set" min="0" max="9">
-                        <input onchange="storeInputs()" class="cell line-zero" id="04" type="text" name="set" min="0" max="9">
-                  </div>
-                  <div class="rows">
-                        <input class="cell line-one" id="11" type="text" name="guess" min="0" max="9">
-                        <input class="cell line-one" id="12" type="text" name="guess" min="0" max="9">
-                        <input class="cell line-one" id="13" type="text" name="guess" min="0" max="9">
-                        <input class="cell line-one" id="14" type="text" name="guess" min="0" max="9">
-                  </div>
-            </div>
-      </div>
-  </div>
+
+                <div id="solution">
+                    <input class="cell line-zero" id="01" type="text" name="set" min="0" max="9">
+                    <input class="cell line-zero" id="02" type="text" name="set" min="0" max="9">
+                    <input class="cell line-zero" id="03" type="text" name="set" min="0" max="9">
+                    <input class="cell line-zero" id="04" type="text" name="set" min="0" max="9">
+                </div>
+                <div class="row template">
+                    <input class="cell line-one" id="11" type="text" name="guess" min="0" max="9">
+                    <input class="cell line-one" id="12" type="text" name="guess" min="0" max="9">
+                    <input class="cell line-one" id="13" type="text" name="guess" min="0" max="9">
+                    <input class="cell line-one" id="14" type="text" name="guess" min="0" max="9">
+                </div>
+    </div>
 
     <script type="text/javascript" src="script.js"></script>
   </body>
