@@ -1,31 +1,22 @@
 //Declarations and Variables
-var setNumbers = []; //this should store the input numbers
 var genRandomNumbers = [];
 
-var cellsInRow = document.getElementsByClassName("line-zero");
-var setCell1 = document.getElementById("01");
-var setCell2 = document.getElementById("02");
-var setCell3 = document.getElementById("03");
-var setCell4 = document.getElementById("04");
-
-
-// //NO NUMBERS CAN BE REPEATED
-//Get 4 numbers from input (0-9, no repeats) and store
-//~
+var solution = document.getElementById("solution");
 
 //- Save number into pre-set inputs
 var storeSetValues = function(){
-  setCell1.value = genRandomNumbers[0];
-  setCell2.value = genRandomNumbers[1];
-  setCell3.value = genRandomNumbers[2];
-  setCell4.value = genRandomNumbers[3];
+    solution.children[0].value = genRandomNumbers[0];
+    solution.children[1].value = genRandomNumbers[1];
+    solution.children[2].value = genRandomNumbers[2];
+    solution.children[3].value = genRandomNumbers[3];
 }
 //If no input, input = random numbers
 var genRanNum = function(){
-  for(var i = 0; i < cellsInRow.length; i++) {
+  for(var i = 0; i < solution.children.length; i++) {
     randomNumber = Math.floor(Math.random()*10);
     genRandomNumbers.push(randomNumber);
   }
+  console.log(genRandomNumbers);
   storeSetValues();
 }
 
@@ -48,12 +39,3 @@ document.querySelectorAll("button")[0].addEventListener("click", function(){
   // document.getElementById("solution").style.visibility = "hidden";
   alert("Game will start now");
 });
-// var startGame = function(){
-//
-// }
-// document.getElementsByTagName("button")[0].addEventListener("click", startGame);
-
-//Execute the start game
-//
-// generateGuessRow();
-// alert(genRandomNumbers);
