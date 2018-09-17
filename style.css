@@ -51,6 +51,5 @@ button:focus { outline: none; }
 
 /* For testing visibility */
 #solution{
-  border: 2px solid red;
-  /* visibility: hidden;
+  visibility: hidden;
 }
