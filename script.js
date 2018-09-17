@@ -1,6 +1,6 @@
 //Declarations and Variables
 var genRandomNumbers = [];
-
+var count = 1;
 var solution = document.getElementById("solution");
 
 //- Save number into pre-set inputs
@@ -29,7 +29,7 @@ var generateGuessRow = function(){
   for(var i = 0; i < 7; i++){
     var newRow = document.getElementsByClassName("row_template")[0].cloneNode(true);
     newRow.style.display = "block";
-    game.appendChild(newRow.cloneNode(true));
+    game.appendChild(newRow.cloneNode(true)).className = "row"+count++;
   }
 }
 
