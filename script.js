@@ -42,15 +42,18 @@ var generateGuessRow = function(){
   }
 }
 
-var startGame = function(){
+document.querySelectorAll("button")[0].addEventListener("click", function(){
   genRanNum();
   generateGuessRow();
   // document.getElementById("solution").style.visibility = "hidden";
   alert("Game will start now");
-}
+});
+// var startGame = function(){
+//
+// }
 // document.getElementsByTagName("button")[0].addEventListener("click", startGame);
 
 //Execute the start game
-// document.querySelector("button")[0].addEventListener("click", startGame);
+//
 // generateGuessRow();
 // alert(genRandomNumbers);
