@@ -1,4 +1,7 @@
 /*Global Styles*/
+*{
+  user-select: none;
+}
 body{
   height: 800px;
   width: 800px;
@@ -49,5 +52,5 @@ button:focus { outline: none; }
 /* For testing visibility */
 #solution{
   border: 2px solid red;
-  /* visibility: hidden; */
+  /* visibility: hidden;
 }
