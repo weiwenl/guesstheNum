@@ -28,31 +28,29 @@ var genRanNum = function(){
   }
   storeSetValues();
 }
-/////////////////////////////////////////
-// var genRanNum = function(){
-//   for(var i = 0; i < cellsInRow.length; i++){
-//     var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-//     var pos = Math.floor(Math.random()*10);
-//     var set = nums[parseInt(pos)];
-//   }
-//   console.log(set);
-//   return genRandomNumbers.push(set);
-// }
-//   genRanNum();
-//   console.log(parseInt(pos));
-//
-//   console.log(genRandomNumbers);
-//   return temp.push(set)
-//////////////////////////////////////////
+
 // console.log(randomNumber);
 // console.log(genRandomNumbers)
 
-
-//- hide the 4 numbers from view of player when <start game> button is clicked
-var startGame = function(){
-  cellsInRow.style.display = "none";
+//Generate guess row
+var generateGuessRow = function(){
+  var game = document.getElementById("game");
+  for(var i = 0; i < 7; i++){
+    var newRow = document.getElementsByClassName("row_template")[0].cloneNode(true);
+    newRow.style.display = "block";
+    game.appendChild(newRow.cloneNode(true));
+  }
 }
 
-genRanNum();
-startGame();
+var startGame = function(){
+  genRanNum();
+  generateGuessRow();
+  // document.getElementById("solution").style.visibility = "hidden";
+  alert("Game will start now");
+}
+// document.getElementsByTagName("button")[0].addEventListener("click", startGame);
+
+//Execute the start game
+// document.querySelector("button")[0].addEventListener("click", startGame);
+// generateGuessRow();
 // alert(genRandomNumbers);
