@@ -89,14 +89,14 @@ var addDisabled = function(whichRow){
 
 
 //Check the players guess of the number - actualCode
-var checkGuessNum = function(){
-  // red = 0;
-  // green = 0;
+var checkGuessNum = function(track){
+  red = 0;
+  green = 0;
 
   //Loop over the arrays to find numbers that are correct and correct position
   genRandomNumbersArr.forEach(function(value, index){ //for each thing in the array, do something
     if(playerGuessArr[index] === genRandomNumbersArr[index]){
-      document.querySelector(".row1").children[index].style = "background: green"; //tempCode
+      document.querySelector(".row"+track).children[index].style = "background: green"; //tempCode
       playerGuessArr[index] = "p"; //p for player
       // this.children[index].style = "background: green"; //###
       console.log("Guess: ", playerGuessArr);
@@ -112,7 +112,7 @@ var checkGuessNum = function(){
     if(indexOfNumberAtIncorrectPosition >= 0){
 
       genRandomNumbersArr[indexOfNumberAtIncorrectPosition] = "";
-      document.querySelector(".row1").children[index].style = "background: red"; //tempCode
+      document.querySelector(".row"+track).children[index].style = "background: red"; //tempCode
       red += 1;
     }
   });
@@ -193,9 +193,8 @@ var trackPlayerGuess = function(){
 //CHECK NUMBER Button executes this!
 document.querySelectorAll("button")[1].addEventListener("click", function(){
   storePlayerGuess(track);
-  // storePlayerGuess();
   console.log(playerGuessArr);
-  checkGuessNum();//script 1 only
+  checkGuessNum(track);
   // resetPlayerGuess(playerGuessArr);
 
   trackPlayerGuess();
