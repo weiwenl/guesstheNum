@@ -4,12 +4,11 @@ var playerGuessArr = [];
 var count = 1;
 var solution = document.getElementById("solution");
 var game = document.getElementById("game");
-var red
+var red;
 var green;
-var lastRowCount = 0;
 var track = 1;
 
-//Declare the rows naming but only assign values to it after creaton
+//Declare the rows naming but only assign values to it after creation
 var row1, row2, row3, row4, row5, row6, row7;
 
 
@@ -50,16 +49,19 @@ var generateGuessRow = function(){
 }
 
 
-//Store player guess
-// var storePlayerGuess = function(track){
-var storePlayerGuess = function(){
-  // var el = document.querySelector('.row'+track);
-  var el = document.querySelector('.row1');
+
+//Store player guess - actualCode
+var storePlayerGuess = function(track){
+// var storePlayerGuess = function(){
+  var el = document.querySelector('.row'+track);
+  // var el = document.querySelector('.row1');
   for(var j = 0; j < 4; j++){
     var x = parseInt(el.children[j].value) //Convert each string value and store in 'c' as number
     playerGuessArr.push(x);
   }
 }
+// end of actualCode
+
 
 //Reset player guess
 var resetPlayerGuess = function(playerGuessArr){
@@ -67,6 +69,7 @@ var resetPlayerGuess = function(playerGuessArr){
     playerGuessArr.pop();
   }
 }
+
 
 
 //Remove attribute disabled - when game start and as game plays on
@@ -84,10 +87,11 @@ var addDisabled = function(whichRow){
   }
 }
 
-//Check the players guess of the number
+
+//Check the players guess of the number - actualCode
 var checkGuessNum = function(){
-  red = 0;
-  green = 0;
+  // red = 0;
+  // green = 0;
 
   //Loop over the arrays to find numbers that are correct and correct position
   genRandomNumbersArr.forEach(function(value, index){ //for each thing in the array, do something
@@ -114,9 +118,9 @@ var checkGuessNum = function(){
   });
 
   return [green, red];
-  lastRowCount += 1;
-  console.log(lastRowCount);
 }
+//end of actualCode
+
 
 //Track the number of player's guess - if previous row is filled up, enable next row
 var trackPlayerGuess = function(){
@@ -125,9 +129,6 @@ var trackPlayerGuess = function(){
     removeDisabled(row2);
     resetPlayerGuess(playerGuessArr);
     track = 2;
-
-    console.log("red:", red);
-    console.log("green:", green);
 
     if((row2.children[0].value && row2.children[1].value &&
     row2.children[2].value && row2.children[3].value) !== ""){
@@ -178,6 +179,8 @@ var trackPlayerGuess = function(){
       }
     }
   }
+  console.log("red:", red);
+  console.log("green:", green);
 }
 
 //Show results of guess
@@ -186,20 +189,23 @@ var trackPlayerGuess = function(){
 // }
 
 
+
 //CHECK NUMBER Button executes this!
 document.querySelectorAll("button")[1].addEventListener("click", function(){
-  storePlayerGuess();
+  storePlayerGuess(track);
+  // storePlayerGuess();
   console.log(playerGuessArr);
-  checkGuessNum();
+  checkGuessNum();//script 1 only
   // resetPlayerGuess(playerGuessArr);
+
   trackPlayerGuess();
-  // genRandomNumbersArr.includes(playerGuessArr[0]);
 
   alert("Is my number correct?");
 });
 
 //START GAME Button executes this!
 document.querySelectorAll("button")[0].addEventListener("click", function(){
+  document.querySelectorAll("button")[1].removeAttribute("disabled");
   genRanNum();
   generateGuessRow();
   removeDisabled(row1);
