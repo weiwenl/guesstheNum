@@ -52,7 +52,7 @@ var generateGuessRow = function(){
 
 //Store player guess
 // var storePlayerGuess = function(track){
-var storePlayerGuess = function(track){
+var storePlayerGuess = function(){
   // var el = document.querySelector('.row'+track);
   var el = document.querySelector('.row1');
   for(var j = 0; j < 4; j++){
@@ -92,6 +92,7 @@ var checkGuessNum = function(){
   //Loop over the arrays to find numbers that are correct and correct position
   genRandomNumbersArr.forEach(function(value, index){ //for each thing in the array, do something
     if(playerGuessArr[index] === genRandomNumbersArr[index]){
+      document.querySelector(".row1").children[index].style = "background: green"; //tempCode
       playerGuessArr[index] = "p"; //p for player
       // this.children[index].style = "background: green"; //###
       console.log("Guess: ", playerGuessArr);
@@ -105,8 +106,9 @@ var checkGuessNum = function(){
   genRandomNumbersArr.forEach(function(value, index){
     var indexOfNumberAtIncorrectPosition = genRandomNumbersArr.indexOf(playerGuessArr[index]);//find the index of playerGuess in the answer array
     if(indexOfNumberAtIncorrectPosition >= 0){
+
       genRandomNumbersArr[indexOfNumberAtIncorrectPosition] = "";
-      // this.children[index].style = "background: red"; //###
+      document.querySelector(".row1").children[index].style = "background: red"; //tempCode
       red += 1;
     }
   });
