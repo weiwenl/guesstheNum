@@ -133,6 +133,7 @@ var checkGuessNum = function(track){
     if((playerGuessArr[0] === genRandomNumbersArr[0]) && (playerGuessArr[1] === genRandomNumbersArr[1]) &&
       (playerGuessArr[2] === genRandomNumbersArr[2]) && (playerGuessArr[3] === genRandomNumbersArr[3])){
         displayWinMsg();
+        document.getElementById("solution").style.visibility = "visible";
       // alert("You did it! You've crack the code. :) ");
     }
     else if((track === 7) && ((playerGuessArr[0] !== genRandomNumbersArr[0]) || (playerGuessArr[1] !== genRandomNumbersArr[1]) ||
