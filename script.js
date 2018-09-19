@@ -48,9 +48,20 @@ var generateGuessRow = function(){
   row7 = document.querySelector(".row7");
 }
 
+// var playerWins = function(){
+//   if(track <= 7){
+//     if(genRandomNumbersArr === playerGuessArr){
+//       alert("You win");
+//     }
+//   }
+//   else{
+//     alert("You lose");
+//   }
+// }
 
 
-//Store player guess - actualCode
+
+//Store player guess
 var storePlayerGuess = function(track){
 // var storePlayerGuess = function(){
   var el = document.querySelector('.row'+track);
@@ -60,7 +71,6 @@ var storePlayerGuess = function(track){
     playerGuessArr.push(x);
   }
 }
-// end of actualCode
 
 
 //Reset player guess
@@ -88,11 +98,10 @@ var addDisabled = function(whichRow){
 }
 
 
-//Check the players guess of the number - actualCode
+//Check the players guess of the number
 var checkGuessNum = function(track){
-  red = 0;
-  green = 0;
-
+  var green = 0;
+  var red = 0;
   //Loop over the arrays to find numbers that are correct and correct position
   genRandomNumbersArr.forEach(function(value, index){ //for each thing in the array, do something
     if(playerGuessArr[index] === genRandomNumbersArr[index]){
@@ -119,7 +128,6 @@ var checkGuessNum = function(track){
 
   return [green, red];
 }
-//end of actualCode
 
 
 //Track the number of player's guess - if previous row is filled up, enable next row
@@ -160,19 +168,6 @@ var trackPlayerGuess = function(){
               resetPlayerGuess(playerGuessArr);
               track = 7;
 
-              if((row7.children[0].value && row7.children[1].value &&
-              row7.children[2].value && row7.children[3].value) !== ""){
-                removeDisabled(row8);
-                resetPlayerGuess(playerGuessArr);
-                track = 8;
-
-                if((row8.children[0].value && row8.children[1].value &&
-                row8.children[2].value && row8.children[3].value) !== ""){
-                  removeDisabled(row9);
-                  resetPlayerGuess(playerGuessArr);
-                  track = 9;
-                }
-              }
             }
           }
         }
@@ -183,12 +178,10 @@ var trackPlayerGuess = function(){
   console.log("green:", green);
 }
 
-//Show results of guess
-// var evalGuess = function(){
-// row1.children[0].style = "background: green";
-// }
-
-
+//RESET GAME Button executes this!
+document.querySelectorAll("button")[2].addEventListener("click", function(){
+  location.reload();
+});
 
 //CHECK NUMBER Button executes this!
 document.querySelectorAll("button")[1].addEventListener("click", function(){
