@@ -86,6 +86,24 @@ var addDisabled = function(whichRow){
   }
 }
 
+var displayWinMsg = function(){
+  var divWin = document.createElement("div");
+  divWin.setAttribute("style", "position: fixed; background-color: rgb(254, 73, 61); padding: 20px; margin: auto; color: #000; bottom: 280px width: 800px");
+  var hWin = document.createElement("h2");
+  hWin.setAttribute("style", "fontSize: 50px; textAlign: center");
+  var textWin = document.createTextNode("You did it! You've crack the code. :) ");
+  hWin.appendChild(textWin);
+  game.appendChild(hWin);
+}
+
+var displayLoseMsg = function(){
+  var divLose = document.createElement("div").setAttribute("class", "loseMsg");
+  var hLose = document.createElement("H2");
+  var textLose = document.createTextNode("Oh no, you've run out of tries. :( ");
+  hLose.appendChild(textLose);
+  game.appendChild(hLose);
+}
+
 
 //Check the players guess of the number
 var checkGuessNum = function(track){
@@ -114,11 +132,13 @@ var checkGuessNum = function(track){
   });
     if((playerGuessArr[0] === genRandomNumbersArr[0]) && (playerGuessArr[1] === genRandomNumbersArr[1]) &&
       (playerGuessArr[2] === genRandomNumbersArr[2]) && (playerGuessArr[3] === genRandomNumbersArr[3])){
-      alert("Nice job! You broke the code.");
+        displayWinMsg();
+      // alert("You did it! You've crack the code. :) ");
     }
     else if((track === 7) && ((playerGuessArr[0] !== genRandomNumbersArr[0]) || (playerGuessArr[1] !== genRandomNumbersArr[1]) ||
       (playerGuessArr[2] || genRandomNumbersArr[2]) || (playerGuessArr[3] !== genRandomNumbersArr[3]))){
-      alert("You failed! :(");
+        displayLoseMsg();
+      // alert("Oh no, you've run out of tries. :( ");
     }
 
 
