@@ -7,11 +7,8 @@ var game = document.getElementById("game");
 var red = 0;
 var orange = 0;
 var green = 0;
-// var red;
-// var orange;
-// var green;
 var track = 1;
-var allMatchArr = ["p", "p", "p", "p"];
+
 
 //Declare the rows naming but only assign values to it after creation
 var row1, row2, row3, row4, row5, row6, row7;
@@ -92,25 +89,20 @@ var addDisabled = function(whichRow){
 
 //Check the players guess of the number
 var checkGuessNum = function(track){
-  // green = 0;
-  // red = 0;
-  // orange = 0;
-
 
   //Loop over the arrays to find numbers that are correct and correct position
   genRandomNumbersArr.forEach(function(value, index){ //for each thing in the array, do something
     var indexOfNumberAtIncorrectPosition = genRandomNumbersArr.indexOf(playerGuessArr[index]);//find the index of playerGuess in the answer array
     if(playerGuessArr[index] === genRandomNumbersArr[index]){
       document.querySelector(".row"+track).children[index].style = "background: green";
-      playerGuessArr[index] = "p"; //p for player
+      //playerGuessArr[index] = "p"; //p for player
       console.log("Player guess is " +playerGuessArr);
-      genRandomNumbersArr[index] = "c"; //c for computer
+      genRandomNumbersArr[index] = playerGuessArr[index]; //c for computer
       console.log("The solution is " +genRandomNumbersArr);
       green += 1; //for every match, green ++
     }
 
     else if(indexOfNumberAtIncorrectPosition >= 0){
-      genRandomNumbersArr[indexOfNumberAtIncorrectPosition] = "";
       document.querySelector(".row"+track).children[index].style = "background: orange";
       orange += 1;
     }
@@ -120,12 +112,22 @@ var checkGuessNum = function(track){
       red += 1;
     }
   });
+    if((playerGuessArr[0] === genRandomNumbersArr[0]) && (playerGuessArr[1] === genRandomNumbersArr[1]) &&
+      (playerGuessArr[2] === genRandomNumbersArr[2]) && (playerGuessArr[3] === genRandomNumbersArr[3])){
+      alert("Nice job! You broke the code.");
+    }
+    else if((track === 7) && ((playerGuessArr[0] !== genRandomNumbersArr[0]) || (playerGuessArr[1] !== genRandomNumbersArr[1]) ||
+      (playerGuessArr[2] || genRandomNumbersArr[2]) || (playerGuessArr[3] !== genRandomNumbersArr[3]))){
+      alert("You failed! :(");
+    }
+
 
 
   console.log("checkGuessNum - red:", red);
   console.log("checkGuessNum - orange:", orange);
   console.log("checkGuessNum - green:", green);
   return [green, orange, red];
+  //return [green, orange, red, match];
   resetPlayerGuess(playerGuessArr);
 }
 
@@ -152,6 +154,9 @@ var trackPlayerGuess = function(){
       removeDisabled(row3);
       resetPlayerGuess(playerGuessArr);
       track = 3;
+      green = 0;
+      red = 0;
+      orange = 0;
       break;
 
     case 3:
@@ -159,6 +164,9 @@ var trackPlayerGuess = function(){
       removeDisabled(row4);
       resetPlayerGuess(playerGuessArr);
       track = 4;
+      green = 0;
+      red = 0;
+      orange = 0;
       break;
 
     case 4:
@@ -166,6 +174,9 @@ var trackPlayerGuess = function(){
       removeDisabled(row5);
       resetPlayerGuess(playerGuessArr);
       track = 5;
+      green = 0;
+      red = 0;
+      orange = 0;
       break;
 
     case 5:
@@ -173,6 +184,9 @@ var trackPlayerGuess = function(){
       removeDisabled(row6);
       resetPlayerGuess(playerGuessArr);
       track = 6;
+      green = 0;
+      red = 0;
+      orange = 0;
       break;
 
     case 6:
@@ -180,12 +194,10 @@ var trackPlayerGuess = function(){
       removeDisabled(row7);
       resetPlayerGuess(playerGuessArr);
       track = 7;
+      green = 0;
+      red = 0;
+      orange = 0;
       break;
-
-    default:
-      console.log("You already won the game.");
-    break;
-
   }
 }
 
@@ -197,6 +209,7 @@ document.querySelectorAll("button")[2].addEventListener("click", function(){
 
 //CHECK NUMBER Button executes this!
 document.querySelectorAll("button")[1].addEventListener("click", function(){
+  console.log(genRandomNumbersArr);
   storePlayerGuess(track);
   console.log(playerGuessArr);
   checkGuessNum(track);
