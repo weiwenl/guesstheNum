@@ -139,6 +139,7 @@ var checkGuessNum = function(track){
     else if((track === 7) && ((playerGuessArr[0] !== genRandomNumbersArr[0]) || (playerGuessArr[1] !== genRandomNumbersArr[1]) ||
       (playerGuessArr[2] || genRandomNumbersArr[2]) || (playerGuessArr[3] !== genRandomNumbersArr[3]))){
         displayLoseMsg();
+        document.getElementById("solution").style.visibility = "visible";
       // alert("Oh no, you've run out of tries. :( ");
     }
 
