@@ -5,8 +5,10 @@ var count = 1;
 var solution = document.getElementById("solution");
 var game = document.getElementById("game");
 var red;
+var orange;
 var green;
 var track = 1;
+var allMatchArr = ["p", "p", "p", "p"];
 
 //Declare the rows naming but only assign values to it after creation
 var row1, row2, row3, row4, row5, row6, row7;
@@ -27,7 +29,7 @@ var genRanNum = function(){
     randomNumber = Math.floor(Math.random()*10);
     genRandomNumbersArr.push(randomNumber);
   }
-  console.log(genRandomNumbersArr);
+  console.log("This is the solution:"+ genRandomNumbersArr);
   storeSetValues();
 }
 
@@ -84,7 +86,6 @@ var resetPlayerGuess = function(playerGuessArr){
 
 //Remove attribute disabled - when game start and as game plays on
 var removeDisabled = function(whichRow){
-  console.log(whichRow);
   for(var i = 0; i < 4; i++){
     whichRow.children[i].removeAttribute("disabled");
   }
@@ -100,18 +101,26 @@ var addDisabled = function(whichRow){
 
 //Check the players guess of the number
 var checkGuessNum = function(track){
-  var green = 0;
-  var red = 0;
+  alert("Is my number correct?");
+  green = 0;
+  red = 0;
+  orange = 0;
   //Loop over the arrays to find numbers that are correct and correct position
   genRandomNumbersArr.forEach(function(value, index){ //for each thing in the array, do something
     if(playerGuessArr[index] === genRandomNumbersArr[index]){
-      document.querySelector(".row"+track).children[index].style = "background: green"; //tempCode
+      document.querySelector(".row"+track).children[index].style = "background: green";
       playerGuessArr[index] = "p"; //p for player
       // this.children[index].style = "background: green"; //###
-      console.log("Guess: ", playerGuessArr);
+      console.log("Player guess is " +playerGuessArr);
       genRandomNumbersArr[index] = "c"; //c for computer
-      console.log("Code: ", genRandomNumbersArr);
+      console.log("The solution is " +genRandomNumbersArr);
       green += 1; //for every match, green ++
+      console.log("Green count:", green);
+    }
+    else{
+      document.querySelector(".row"+track).children[index].style = "background: red";
+      red += 1;
+      console.log("Red count:", red);
     }
   });
 
@@ -121,62 +130,79 @@ var checkGuessNum = function(track){
     if(indexOfNumberAtIncorrectPosition >= 0){
 
       genRandomNumbersArr[indexOfNumberAtIncorrectPosition] = "";
-      document.querySelector(".row"+track).children[index].style = "background: red"; //tempCode
-      red += 1;
+      document.querySelector(".row"+track).children[index].style = "background: orange";
+      orange += 1;
+      console.log("Orange count:", orange);
     }
   });
 
-  return [green, red];
+  // if(playerGuessArr = allMatchArr){//tempCode
+  //   alert("YOU CRACK THE CODE!");
+  //   track = 0;
+  // }
+  console.log("checkGuessNum - red:", red);
+  console.log("checkGuessNum - orange:", orange);
+  console.log("checkGuessNum - green:", green);
+  return [green, orange, red];
 }
 
 
 //Track the number of player's guess - if previous row is filled up, enable next row
 var trackPlayerGuess = function(){
-  if((row1.children[0].value && row1.children[1].value &&
-  row1.children[2].value && row1.children[3].value) !== ""){
-    removeDisabled(row2);
-    resetPlayerGuess(playerGuessArr);
-    track = 2;
+  console.log("trackPlayerGuess - red:", red);
+  console.log("trackPlayerGuess - orange:", orange);
+  console.log("trackPlayerGuess - green:", green);
 
-    if((row2.children[0].value && row2.children[1].value &&
-    row2.children[2].value && row2.children[3].value) !== ""){
+  switch(track){
+    case 1:
+      console.log("Row2 is disabled");
+      removeDisabled(row2);
+      resetPlayerGuess(playerGuessArr);
+      track = 2;
+      break;
+
+    case 2:
+      console.log("Row3 is disabled");
       removeDisabled(row3);
       resetPlayerGuess(playerGuessArr);
       track = 3;
+      break;
 
-      if((row3.children[0].value && row3.children[1].value &&
-      row3.children[2].value && row3.children[3].value) !== ""){
-        removeDisabled(row4);
-        resetPlayerGuess(playerGuessArr);
-        track = 4;
+    case 3:
+      console.log("Row4 is disabled");
+      removeDisabled(row4);
+      resetPlayerGuess(playerGuessArr);
+      track = 4;
+      break;
 
-        if((row4.children[0].value && row4.children[1].value &&
-        row4.children[2].value && row4.children[3].value) !== ""){
-          removeDisabled(row5);
-          resetPlayerGuess(playerGuessArr);
-          track = 5;
+    case 4:
+      console.log("Row5 is disabled");
+      removeDisabled(row5);
+      resetPlayerGuess(playerGuessArr);
+      track = 5;
+      break;
 
-          if((row5.children[0].value && row5.children[1].value &&
-          row5.children[2].value && row5.children[3].value) !== ""){
-            removeDisabled(row6);
-            resetPlayerGuess(playerGuessArr);
-            track = 6;
+    case 5:
+      console.log("Row6 is disabled");
+      removeDisabled(row6);
+      resetPlayerGuess(playerGuessArr);
+      track = 6;
+      break;
 
-            if((row6.children[0].value && row6.children[1].value &&
-            row6.children[2].value && row6.children[3].value) !== ""){
-              removeDisabled(row7);
-              resetPlayerGuess(playerGuessArr);
-              track = 7;
+    case 6:
+      console.log("Row7 is disabled");
+      removeDisabled(row7);
+      resetPlayerGuess(playerGuessArr);
+      track = 7;
+      break;
 
-            }
-          }
-        }
-      }
-    }
+    default:
+      console.log("You already won the game.");
+    break;
+
   }
-  console.log("red:", red);
-  console.log("green:", green);
 }
+
 
 //RESET GAME Button executes this!
 document.querySelectorAll("button")[2].addEventListener("click", function(){
@@ -188,11 +214,14 @@ document.querySelectorAll("button")[1].addEventListener("click", function(){
   storePlayerGuess(track);
   console.log(playerGuessArr);
   checkGuessNum(track);
-  // resetPlayerGuess(playerGuessArr);
-
   trackPlayerGuess();
-
-  alert("Is my number correct?");
+  // if(playerGuessArr = allMatchArr){//tempCode
+  //   alert("YOU CRACK THE CODE!");
+  //   track = 0;
+  // }
+  // else{
+  //   trackPlayerGuess();
+  // }
 });
 
 //START GAME Button executes this!
@@ -202,5 +231,5 @@ document.querySelectorAll("button")[0].addEventListener("click", function(){
   generateGuessRow();
   removeDisabled(row1);
   // document.getElementById("solution").style.visibility = "hidden";
-  alert("Game will start now");
+  // alert("Game will start now");
 });
