@@ -53,18 +53,6 @@ var generateGuessRow = function(){
   row7 = document.querySelector(".row7");
 }
 
-// var playerWins = function(){
-//   if(track <= 7){
-//     if(genRandomNumbersArr === playerGuessArr){
-//       alert("You win");
-//     }
-//   }
-//   else{
-//     alert("You lose");
-//   }
-// }
-
-
 
 //Store player guess
 var storePlayerGuess = function(track){
@@ -104,10 +92,10 @@ var addDisabled = function(whichRow){
 
 //Check the players guess of the number
 var checkGuessNum = function(track){
-  // alert("Is my number correct?");
   // green = 0;
   // red = 0;
   // orange = 0;
+
 
   //Loop over the arrays to find numbers that are correct and correct position
   genRandomNumbersArr.forEach(function(value, index){ //for each thing in the array, do something
@@ -115,59 +103,25 @@ var checkGuessNum = function(track){
     if(playerGuessArr[index] === genRandomNumbersArr[index]){
       document.querySelector(".row"+track).children[index].style = "background: green";
       playerGuessArr[index] = "p"; //p for player
-      // this.children[index].style = "background: green"; //###
       console.log("Player guess is " +playerGuessArr);
       genRandomNumbersArr[index] = "c"; //c for computer
       console.log("The solution is " +genRandomNumbersArr);
       green += 1; //for every match, green ++
-      // console.log("Green count:", green);
-
     }
-  //});
-
-  //Loop over again to find numbers that are correct but NOT position
-  // genRandomNumbersArr.forEach(function(value, index){
-    // var indexOfNumberAtIncorrectPosition = genRandomNumbersArr.indexOf(playerGuessArr[index]);//find the index of playerGuess in the answer array
 
     else if(indexOfNumberAtIncorrectPosition >= 0){
       genRandomNumbersArr[indexOfNumberAtIncorrectPosition] = "";
       document.querySelector(".row"+track).children[index].style = "background: orange";
       orange += 1;
-      // console.log("Orange count:", orange);
     }
+
     else if(indexOfNumberAtIncorrectPosition == -1){
       document.querySelector(".row"+track).children[index].style = "background: red";
       red += 1;
-      // console.log("Red count:", red);
     }
   });
 
-  // genRandomNumbersArr.forEach(function(value, index){
-  //   var indexOfNumberAtIncorrectPosition = genRandomNumbersArr.indexOf(playerGuessArr[index]);//find the index of playerGuess in the answer array
-  //   console.log("hi"+indexOfNumberAtIncorrectPosition);
-  //   if(indexOfNumberAtIncorrectPosition == -1){
-  //     document.querySelector(".row"+track).children[index].style = "background: red";
-  //     red += 1;
-  //     console.log("Red count:", red);
-  //   }
-  // });
 
-  // document.querySelector(".row"+track).forEach(function(value, index){
-  //     if(document.querySelector(".row"+track).children[index].style !== "background: green" &&
-  //   document.querySelector(".row"+track).children[index].style !== "background: orange"){
-  //     document.querySelector(".row"+track).children[index].style = "background: red";
-  //   }
-  // });
-
-
-
-
-
-
-  // if(playerGuessArr = allMatchArr){//tempCode
-  //   alert("YOU CRACK THE CODE!");
-  //   track = 0;
-  // }
   console.log("checkGuessNum - red:", red);
   console.log("checkGuessNum - orange:", orange);
   console.log("checkGuessNum - green:", green);
@@ -247,13 +201,6 @@ document.querySelectorAll("button")[1].addEventListener("click", function(){
   console.log(playerGuessArr);
   checkGuessNum(track);
   trackPlayerGuess();
-  // if(playerGuessArr = allMatchArr){//tempCode
-  //   alert("YOU CRACK THE CODE!");
-  //   track = 0;
-  // }
-  // else{
-  //   trackPlayerGuess();
-  // }
 });
 
 //START GAME Button executes this!
@@ -263,5 +210,4 @@ document.querySelectorAll("button")[0].addEventListener("click", function(){
   generateGuessRow();
   removeDisabled(row1);
   // document.getElementById("solution").style.visibility = "hidden";
-  // alert("Game will start now");
 });
