@@ -10,7 +10,7 @@ body{
   color: #01abaa;
 }
 h1 {
-  font-size: 50px;
+  font-size: 60px;
 }
 
 p{
@@ -50,7 +50,6 @@ button:focus { outline: none; }
   border: 2px solid #fea680;
 }
 
-/* For testing visibility */
 #solution{
   visibility: hidden;
 }
