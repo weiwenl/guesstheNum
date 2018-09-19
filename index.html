@@ -3,14 +3,17 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
-    <title></title>
+    <title>Be the mastermind</title>
   </head>
   <body>
     <div class="frame">
             <div class="header">
               <h1>Crack the Code</h1>
               <p>The objective of the game is to guess the exact positions of the numbers in the computer's sequence.<br>
-                For each number that is correct and in the correct position, the number display will turn green.<br>For each number that is correct but is NOT in the correct position, the number display will turn red.</p>
+                For each number that is correct and in the correct position, the number display will turn <span id="green">green</span>.
+                <br>For each number that is correct but is NOT in the correct position, the number display will turn <span id="orange">orange</span>.<br>
+              For each number that do not exists in the sequences, the number display will turn <span id="red">red</span>.</p>
+
             </div>
 
                 <button type="button" name="button">Start Game</button>
