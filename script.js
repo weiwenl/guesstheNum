@@ -4,9 +4,12 @@ var playerGuessArr = [];
 var count = 1;
 var solution = document.getElementById("solution");
 var game = document.getElementById("game");
-var red;
-var orange;
-var green;
+var red = 0;
+var orange = 0;
+var green = 0;
+// var red;
+// var orange;
+// var green;
 var track = 1;
 var allMatchArr = ["p", "p", "p", "p"];
 
@@ -101,12 +104,14 @@ var addDisabled = function(whichRow){
 
 //Check the players guess of the number
 var checkGuessNum = function(track){
-  alert("Is my number correct?");
-  green = 0;
-  red = 0;
-  orange = 0;
+  // alert("Is my number correct?");
+  // green = 0;
+  // red = 0;
+  // orange = 0;
+
   //Loop over the arrays to find numbers that are correct and correct position
   genRandomNumbersArr.forEach(function(value, index){ //for each thing in the array, do something
+    var indexOfNumberAtIncorrectPosition = genRandomNumbersArr.indexOf(playerGuessArr[index]);//find the index of playerGuess in the answer array
     if(playerGuessArr[index] === genRandomNumbersArr[index]){
       document.querySelector(".row"+track).children[index].style = "background: green";
       playerGuessArr[index] = "p"; //p for player
@@ -115,26 +120,49 @@ var checkGuessNum = function(track){
       genRandomNumbersArr[index] = "c"; //c for computer
       console.log("The solution is " +genRandomNumbersArr);
       green += 1; //for every match, green ++
-      console.log("Green count:", green);
+      // console.log("Green count:", green);
+
     }
-    else{
-      document.querySelector(".row"+track).children[index].style = "background: red";
-      red += 1;
-      console.log("Red count:", red);
-    }
-  });
+  //});
 
   //Loop over again to find numbers that are correct but NOT position
-  genRandomNumbersArr.forEach(function(value, index){
-    var indexOfNumberAtIncorrectPosition = genRandomNumbersArr.indexOf(playerGuessArr[index]);//find the index of playerGuess in the answer array
-    if(indexOfNumberAtIncorrectPosition >= 0){
+  // genRandomNumbersArr.forEach(function(value, index){
+    // var indexOfNumberAtIncorrectPosition = genRandomNumbersArr.indexOf(playerGuessArr[index]);//find the index of playerGuess in the answer array
 
+    else if(indexOfNumberAtIncorrectPosition >= 0){
       genRandomNumbersArr[indexOfNumberAtIncorrectPosition] = "";
       document.querySelector(".row"+track).children[index].style = "background: orange";
       orange += 1;
-      console.log("Orange count:", orange);
+      // console.log("Orange count:", orange);
+    }
+    else if(indexOfNumberAtIncorrectPosition == -1){
+      document.querySelector(".row"+track).children[index].style = "background: red";
+      red += 1;
+      // console.log("Red count:", red);
     }
   });
+
+  // genRandomNumbersArr.forEach(function(value, index){
+  //   var indexOfNumberAtIncorrectPosition = genRandomNumbersArr.indexOf(playerGuessArr[index]);//find the index of playerGuess in the answer array
+  //   console.log("hi"+indexOfNumberAtIncorrectPosition);
+  //   if(indexOfNumberAtIncorrectPosition == -1){
+  //     document.querySelector(".row"+track).children[index].style = "background: red";
+  //     red += 1;
+  //     console.log("Red count:", red);
+  //   }
+  // });
+
+  // document.querySelector(".row"+track).forEach(function(value, index){
+  //     if(document.querySelector(".row"+track).children[index].style !== "background: green" &&
+  //   document.querySelector(".row"+track).children[index].style !== "background: orange"){
+  //     document.querySelector(".row"+track).children[index].style = "background: red";
+  //   }
+  // });
+
+
+
+
+
 
   // if(playerGuessArr = allMatchArr){//tempCode
   //   alert("YOU CRACK THE CODE!");
@@ -144,6 +172,7 @@ var checkGuessNum = function(track){
   console.log("checkGuessNum - orange:", orange);
   console.log("checkGuessNum - green:", green);
   return [green, orange, red];
+  resetPlayerGuess(playerGuessArr);
 }
 
 
@@ -159,6 +188,9 @@ var trackPlayerGuess = function(){
       removeDisabled(row2);
       resetPlayerGuess(playerGuessArr);
       track = 2;
+      green = 0;
+      red = 0;
+      orange = 0;
       break;
 
     case 2:
