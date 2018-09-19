@@ -54,3 +54,18 @@ button:focus { outline: none; }
 #solution{
   visibility: hidden;
 }
+
+#green{
+  font-weight: bold;
+  color: green;
+}
+
+#orange{
+  font-weight: bold;
+  color: orange;
+}
+
+#red{
+  font-weight: bold;
+  color: red;
+}
