@@ -21,10 +21,10 @@
                 <button type="button" name="button">Reset</button>
 
                 <div id="solution">
-                    <input class="cell" type="text" disabled="disabled" name="set" min="0" max="9">
-                    <input class="cell" type="text" disabled="disabled" name="set" min="0" max="9">
-                    <input class="cell" type="text" disabled="disabled" name="set" min="0" max="9">
-                    <input class="cell" type="text" disabled="disabled" name="set" min="0" max="9">
+                    <input class="cell" type="number" disabled="disabled" name="set" min="0" max="9">
+                    <input class="cell" type="number" disabled="disabled" name="set" min="0" max="9">
+                    <input class="cell" type="number" disabled="disabled" name="set" min="0" max="9">
+                    <input class="cell" type="number" disabled="disabled" name="set" min="0" max="9">
                 </div>
                 <div id="game">
 
@@ -32,10 +32,10 @@
 
     </div>
     <div class="row_template" style="display:none">
-        <input class="cell" maxlength="1" type="text" name="guess" min="0" max="9" disabled="disabled">
-        <input class="cell" maxlength="1" type="text" name="guess" min="0" max="9" disabled="disabled">
-        <input class="cell" maxlength="1" type="text" name="guess" min="0" max="9" disabled="disabled">
-        <input class="cell" maxlength="1" type="text" name="guess" min="0" max="9" disabled="disabled">
+        <input class="cell" type="number" name="guess" min="0" max="9" disabled="disabled" onKeyPress="if(this.value.length >= 1) return false">
+        <input class="cell" type="number" name="guess" min="0" max="9" disabled="disabled" onKeyPress="if(this.value.length >= 1) return false">
+        <input class="cell" type="number" name="guess" min="0" max="9" disabled="disabled" onKeyPress="if(this.value.length >= 1) return false">
+        <input class="cell" type="number" name="guess" min="0" max="9" disabled="disabled" onKeyPress="if(this.value.length >= 1) return false">
     </div>
 
     <script type="text/javascript" src="script.js"></script>
