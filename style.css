@@ -68,3 +68,15 @@ button:focus { outline: none; }
   font-weight: bold;
   color: red;
 }
+
+.displayMsg{
+  position: fixed;
+  background-color: rgb(254, 73, 61);
+  padding: 20px;
+  margin: auto;
+  color: #000;
+  bottom: 1060px;
+  width: 800px;
+  font-size: 50px;
+  text-align: center;
+}
