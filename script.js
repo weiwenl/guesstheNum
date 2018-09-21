@@ -1,4 +1,19 @@
-//Declarations and Variables
+/*
+
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+                        Declaration of Variables
+
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+*/
+
 var genRandomNumbersArr = [];
 var playerGuessArr = [];
 var count = 1;
@@ -10,20 +25,35 @@ var green = 0;
 var track = 1;
 
 
-//Declare the rows naming but only assign values to it after creation
-var row1, row2, row3, row4, row5, row6, row7;
+//Declare the rows variables but only assign values to it after creation
+var row1; var row2; var row3; var row4; var row5; var row6; var row7;
 
 
-//Save number into solution text value
+/*
+
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+      Generate Random Computer Sequence and Store its values into display
+
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+*/
+
+
 var storeSetValues = function(){
     solution.children[0].value = genRandomNumbersArr[0];
     solution.children[1].value = genRandomNumbersArr[1];
     solution.children[2].value = genRandomNumbersArr[2];
     solution.children[3].value = genRandomNumbersArr[3];
-}
+};
 
 
-//Generate 4 random numbers
 var genRanNum = function(){
   for(var i = 0; i < solution.children.length; i++) {
     randomNumber = Math.floor(Math.random()*10);
@@ -34,7 +64,22 @@ var genRanNum = function(){
 }
 
 
-//Generate guess row
+/*
+
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+                      Generate 7 rows of guess tries
+
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+*/
+
 var generateGuessRow = function(){
   for(var i = 0; i < 7; i++){
     var newRow = document.getElementsByClassName("row_template")[0].cloneNode(true);
@@ -51,19 +96,47 @@ var generateGuessRow = function(){
 }
 
 
-//Store player guess
+/*
+
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+                      Store player's guess into an array
+
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+*/
+
 var storePlayerGuess = function(track){
-// var storePlayerGuess = function(){
   var el = document.querySelector('.row'+track);
-  // var el = document.querySelector('.row1');
   for(var j = 0; j < 4; j++){
-    var x = parseInt(el.children[j].value) //Convert each string value and store in 'c' as number
+    var x = parseInt(el.children[j].value);
     playerGuessArr.push(x);
   }
 }
 
 
-//Reset player guess
+/*
+
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+                              Reset player guess
+
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+*/
+
 var resetPlayerGuess = function(playerGuessArr){
   while (playerGuessArr.length) {
     playerGuessArr.pop();
@@ -71,53 +144,102 @@ var resetPlayerGuess = function(playerGuessArr){
 }
 
 
+/*
 
-//Remove attribute disabled - when game start and as game plays on
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+              Add or remove attribute "disabled" from each row
+
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+*/
+
+//When game start and as game plays on
 var removeDisabled = function(whichRow){
   for(var i = 0; i < 4; i++){
     whichRow.children[i].removeAttribute("disabled");
   }
 }
 
-//Add attribute disabled - after checking each row
+//After checking each row
 var addDisabled = function(whichRow){
   for(var i = 0; i < 4; i++){
     whichRow.children[i].addAttribute("disabled");
   }
 }
 
+
+/*
+
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+                          Display Win or Lose Message
+
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+*/
+
 var displayWinMsg = function(){
+  game.style.visibility = "hidden";
+
   var divWin = document.createElement("div");
-  divWin.setAttribute("style", "position: fixed; background-color: rgb(254, 73, 61); padding: 20px; margin: auto; color: #000; bottom: 280px width: 800px");
+  divWin.setAttribute("class", "displayMsg");
   var hWin = document.createElement("h2");
-  hWin.setAttribute("style", "fontSize: 50px; textAlign: center");
   var textWin = document.createTextNode("You did it! You've crack the code. :) ");
   hWin.appendChild(textWin);
-  game.appendChild(hWin);
+  solution.appendChild(hWin);
 }
 
 var displayLoseMsg = function(){
-  var divLose = document.createElement("div").setAttribute("class", "loseMsg");
-  var hLose = document.createElement("H2");
+  game.style.visibility = "hidden";
+
+  var divLose = document.createElement("div");
+  divLose.setAttribute("class", "displayMsg");
+  var hLose = document.createElement("h2");
   var textLose = document.createTextNode("Oh no, you've run out of tries. :( ");
   hLose.appendChild(textLose);
-  game.appendChild(hLose);
+  solution.appendChild(hLose);
 }
 
 
-//Check the players guess of the number
+/*
+
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+              Check the player's guess of the number sequence
+
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+*/
+
 var checkGuessNum = function(track){
 
-  //Loop over the arrays to find numbers that are correct and correct position
-  genRandomNumbersArr.forEach(function(value, index){ //for each thing in the array, do something
-    var indexOfNumberAtIncorrectPosition = genRandomNumbersArr.indexOf(playerGuessArr[index]);//find the index of playerGuess in the answer array
+  genRandomNumbersArr.forEach(function(value, index){
+    var indexOfNumberAtIncorrectPosition = genRandomNumbersArr.indexOf(playerGuessArr[index]);
     if(playerGuessArr[index] === genRandomNumbersArr[index]){
       document.querySelector(".row"+track).children[index].style = "background: green";
-      //playerGuessArr[index] = "p"; //p for player
       console.log("Player guess is " +playerGuessArr);
-      genRandomNumbersArr[index] = playerGuessArr[index]; //c for computer
+      genRandomNumbersArr[index] = playerGuessArr[index];
       console.log("The solution is " +genRandomNumbersArr);
-      green += 1; //for every match, green ++
+      green += 1;
     }
 
     else if(indexOfNumberAtIncorrectPosition >= 0){
@@ -130,31 +252,45 @@ var checkGuessNum = function(track){
       red += 1;
     }
   });
+
     if((playerGuessArr[0] === genRandomNumbersArr[0]) && (playerGuessArr[1] === genRandomNumbersArr[1]) &&
       (playerGuessArr[2] === genRandomNumbersArr[2]) && (playerGuessArr[3] === genRandomNumbersArr[3])){
         displayWinMsg();
-        document.getElementById("solution").style.visibility = "visible";
-      // alert("You did it! You've crack the code. :) ");
     }
+
     else if((track === 7) && ((playerGuessArr[0] !== genRandomNumbersArr[0]) || (playerGuessArr[1] !== genRandomNumbersArr[1]) ||
       (playerGuessArr[2] || genRandomNumbersArr[2]) || (playerGuessArr[3] !== genRandomNumbersArr[3]))){
         displayLoseMsg();
-        document.getElementById("solution").style.visibility = "visible";
-      // alert("Oh no, you've run out of tries. :( ");
     }
 
+    document.getElementById("solution").style.visibility = "visible";
 
 
   console.log("checkGuessNum - red:", red);
   console.log("checkGuessNum - orange:", orange);
   console.log("checkGuessNum - green:", green);
   return [green, orange, red];
-  //return [green, orange, red, match];
   resetPlayerGuess(playerGuessArr);
 }
 
 
-//Track the number of player's guess - if previous row is filled up, enable next row
+/*
+
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+                    Track the number of player's guess
+
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+*/
+
+//If previous row is filled up, enable next row
 var trackPlayerGuess = function(){
   console.log("trackPlayerGuess - red:", red);
   console.log("trackPlayerGuess - orange:", orange);
@@ -224,6 +360,22 @@ var trackPlayerGuess = function(){
 }
 
 
+/*
+
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+                    Function of each button pressed
+
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+*/
+
 //RESET GAME Button executes this!
 document.querySelectorAll("button")[2].addEventListener("click", function(){
   location.reload();
@@ -244,5 +396,4 @@ document.querySelectorAll("button")[0].addEventListener("click", function(){
   genRanNum();
   generateGuessRow();
   removeDisabled(row1);
-  // document.getElementById("solution").style.visibility = "hidden";
 });
