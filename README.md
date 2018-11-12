@@ -1,25 +1,13 @@
-This is the first project we have to complete at GA. And this my project - a guess the 4 digit number game. I will add in more instructions and details later. But for now lets stick to this...."
-This is the first project we have to complete at GA. And this my project - a guess the 4 digit number game. I will add in more instructions and details later. But for now lets stick to this....
+This is my first project completed at GA. It is a game to guess a sequence of 4 random generated digits.
 
-//Pseudo Code
+HOW TO PLAY?
+1) The objective of this game is to guess the numbers in the computer generated sequence where the numbers can repeat.
+2) You will fill in numbers into the empty blanks and check the numbers with the button to match the answers and to display hints.
+3) The background colour of the boxes will change to display red, orange or green depending on the numbers you have entered.
+ - If your number does not exists in the answer sequence - the background will turn RED.
+ - If your number exists in the answer sequence but it is placed in the wrong position - the background will turn ORANGE.
+ - If your number exists in the answer sequence and the position of the number is correct - the background will turn GREEN.
+4) You have 7 tries to guess the right numbers and its sequence; otherwise you will lose the game. 
+5) You can reset the game to play it again if you want to. 
 
-//Get 4 numbers as input (0-9, no repeats)
-//- Alert error if the numbers are repeated
-//- if no input detected get input = random numbers
-//- Save number
-//- hide the 4 numbers from view of player when <start game> button is clicked
-
-//Create 4 input element to get the guess from the user
-//Check if the input is the same as the SET INPUT
-//- if the number exists in the array, set the background color of the input to RED
-//- if the number exists and it is in the correct position in the array,
-    //set the background color of the input to GREEN
-//- if the number does not exist at all, dont change the background color
-
-//After the check process is done, create another set of elements of the next guess
-//Call the fn above and repeat the process until the player has reach 7 guess.
-
-//Keep checking that the input = to the set input < 8 guess
-//- If the user did not solve the guess within 7 tries, alert user that he lost.
-
-// |_| |_| |_| |_|
+Future improvements: Make the game mobile friendly and adapted to different screen sizes. 
