@@ -6,9 +6,6 @@ body{
   background-image: url("matrix.jpeg");
   height: 100%;
   width: 100%;
-  /* margin: auto; */
-  /* background-color: #000;
-  color: #01abaa; */
 }
 .sidebar h1 {
   font-size: 60px;
@@ -36,10 +33,9 @@ button{
   margin: 10px 10px;
 }
 button:focus { outline: none; }
-/**/
+
 .frame{
   text-align: center;
-  /* height: 860px; */
 }
 
 .cell{
@@ -74,25 +70,10 @@ button:focus { outline: none; }
   color: red;
 }
 
-/* .displayMsg{
-  position: fixed;
-  background-color: rgb(254, 73, 61);
-  padding: 20px;
-  margin: auto;
-  color: #000;
-  bottom: 1060px;
-  width: 800px;
-  font-size: 50px;
-  text-align: center;
-} */
-
 .sidebar{
   background-color: #669966;
-  /* padding: 30px;
-  margin: 70px 0 0 30px; */
 }
 
-.display{
-  height: 70px;
+#display{
   color: #fff;
 }

@@ -17,8 +17,8 @@
 var genRandomNumbersArr = [];
 var playerGuessArr = [];
 var count = 1;
+var side = document.getElementById("display")
 var solution = document.getElementById("solution");
-var game = document.getElementById("game");
 var red = 0;
 var orange = 0;
 var green = 0;
@@ -198,7 +198,7 @@ var displayWinMsg = function(){
   hWin.setAttribute("style", "fontSize: 50px; textAlign: center");
   var textWin = document.createTextNode("You did it! You've crack the code. :) ");
   hWin.appendChild(textWin);
-  game.appendChild(hWin);
+  display.appendChild(hWin);
 }
 
 var displayLoseMsg = function(){
