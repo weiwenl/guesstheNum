@@ -206,7 +206,7 @@ var displayLoseMsg = function(){
   var hLose = document.createElement("H2");
   var textLose = document.createTextNode("Oh no, you've run out of tries. :( ");
   hLose.appendChild(textLose);
-  game.appendChild(hLose);
+  display.appendChild(hLose);
 }
 
 
