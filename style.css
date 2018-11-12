@@ -1,49 +1,54 @@
 /*Global Styles*/
 *{
-  user-select: none;
+  /* user-select: none; */
 }
 body{
-  height: 800px;
-  width: 800px;
-  margin: auto;
-  background-color: #000;
-  color: #01abaa;
+  background-image: url("matrix.jpeg");
+  height: 100%;
+  width: 100%;
+  /* margin: auto; */
+  /* background-color: #000;
+  color: #01abaa; */
 }
-h1 {
+.sidebar h1 {
   font-size: 60px;
+  color: white;
 }
 
 p{
-  font-size: 18px;
+  font-size: 16px;
 }
 
 button{
   color: #000;
   font-size: 20px;
   background-color: #fedc3d;
-  border-radius: 35px;
+
   border-color: #fea680;
   outline: none;
   padding: 20px;
   text-align: center;
   display: inline-block;
-  margin: 10px 20px;
+}
+
+.sidebar button{
+  border-radius: 35px;
+  margin: 10px 10px;
 }
 button:focus { outline: none; }
 /**/
 .frame{
   text-align: center;
-  background-color: ;
-  height: 860px;
+  /* height: 860px; */
 }
 
 .cell{
-  width: 90px;
-  height: 90px;
-  font-size: 60px;
+  width: 80px;
+  height: 60px;
+  font-size: 50px;
   text-align: center;
-  padding: 0 15px 0 15px;
-  margin: 20px;
+  padding: 0 0 0 15px;
+  margin: 10px;
   text-align: center;
 }
 .line-zero rows{
@@ -69,7 +74,7 @@ button:focus { outline: none; }
   color: red;
 }
 
-.displayMsg{
+/* .displayMsg{
   position: fixed;
   background-color: rgb(254, 73, 61);
   padding: 20px;
@@ -79,4 +84,15 @@ button:focus { outline: none; }
   width: 800px;
   font-size: 50px;
   text-align: center;
+} */
+
+.sidebar{
+  background-color: #669966;
+  /* padding: 30px;
+  margin: 70px 0 0 30px; */
+}
+
+.display{
+  height: 70px;
+  color: #fff;
 }
