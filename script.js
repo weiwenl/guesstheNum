@@ -391,6 +391,7 @@ document.querySelectorAll("button")[1].addEventListener("click", function(){
 
 //START GAME Button executes this!
 document.querySelectorAll("button")[0].addEventListener("click", function(){
+  document.querySelectorAll("button")[0].disabled = true;
   document.querySelectorAll("button")[1].removeAttribute("disabled");
   genRanNum();
   generateGuessRow();
